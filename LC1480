@@ -1,0 +1,13 @@
+# 1480. Running Sum of 1d Array
+# Difficulty: Easy
+
+class Solution(object):
+    def runningSum(self, nums):
+        ans = []
+        temp = 0
+
+        for i in range(len(nums)):
+            temp += nums[i]
+            ans.append(temp)
+
+        return ans

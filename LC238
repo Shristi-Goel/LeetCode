@@ -1,0 +1,32 @@
+# 238. Product of Array Except Self
+#
+# Problem:
+# Given an integer array nums, return an array answer where
+# answer[i] is the product of all elements of nums except nums[i].
+#
+# Requirements:
+# - O(n) time
+# - No division operation
+
+class Solution(object):
+    def productExceptSelf(self, nums):
+        left, right = 1, 1
+        l, r, ans = [], [], []
+
+        for i in range(len(nums)):
+            if i - 1 < 0:
+                left *= 1
+            else:
+                left *= nums[i - 1]
+            l.append(left)
+
+        for j in range(len(nums) - 1, -1, -1):
+            r.append(right)
+            right *= nums[j]
+
+        r.reverse()
+
+        for k in range(len(nums)):
+            ans.append(r[k] * l[k])
+
+        return ans
